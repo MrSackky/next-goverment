@@ -21,7 +21,8 @@ module.exports = {
     return queryInterface.sequelize.transaction((t) => {
       return Promise.all([
         queryInterface.addColumn('users', 'password', {
-          type: Sequelize.STRING
+          type: Sequelize.STRING,
+          after: "id"
         }, { transaction: t })
       ])
     });
@@ -40,7 +41,7 @@ module.exports = {
     //     queryInterface.removeColumn('table_name', 'field_two_name', { transaction: t })
     // ])
     return Promise.all([
-      queryInterface.removeColumn('users', 'password', { transaction: t })
+      queryInterface.removeColumn('users', 'password')
     ])
   }
 };

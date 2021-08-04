@@ -10,31 +10,31 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
-     return queryInterface.bulkInsert('packages', [
+     */
+    return queryInterface.bulkInsert('packages', [
       {
-        package_id: '1',
+        package_id: 1,
         code_package: 'GOV-F-001',
         name_package: 'Free Package',
-        size_limit: '50'
-      }, 
+        size_limit: '50',
+      },
       {
-        package_id: '2',
+        package_id: 2,
         code_package: 'GOV-C-001',
         name_package: 'Connect Package',
-        size_limit: '500'
+        size_limit: '500',
       },
       {
-        package_id: '3',
+        package_id: 3,
         code_package: 'GOV-S-001',
         name_package: 'Standard',
-        size_limit: '4000'
+        size_limit: '4000',
       },
       {
-        package_id: '4',
+        package_id: 4,
         code_package: 'GOV-P-001',
         name_package: 'Premium Package',
-        size_limit: '-1'
+        size_limit: '-1',
       },
     ]);
   },
@@ -46,6 +46,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-     return queryInterface.bulkDelete('packages', null, {});
-  }
+    return queryInterface.bulkDelete('packages', null, {});
+  },
 };

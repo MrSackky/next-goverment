@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Type_user extends Model {
     /**
@@ -12,13 +10,24 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-  };
-  Type_user.init({
-    type_user_id: DataTypes.INTEGER,
-    name_type_user: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Type_user',
-  });
+  }
+  Type_user.init(
+    {
+      type_user_id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true
+      },
+      name_type_user: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: 'Type_user',
+      timestamps: false,
+      // I don't want createdAt
+      createdAt: false,
+      updatedAt: false,
+      id: false,
+    },
+  );
   return Type_user;
 };

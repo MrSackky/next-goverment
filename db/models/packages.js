@@ -1,9 +1,7 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class packages extends Model {
+  class Packages extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -12,15 +10,26 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-  };
-  packages.init({
-    package_id: DataTypes.INTEGER,
-    code_package: DataTypes.STRING,
-    name_package: DataTypes.STRING,
-    size_limit: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'packages',
-  });
-  return packages;
+  }
+  Packages.init(
+    {
+      package_id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true
+      },
+      code_package: DataTypes.STRING,
+      name_package: DataTypes.STRING,
+      size_limit: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: 'Packages',
+      timestamps: false,
+      // I don't want createdAt
+      createdAt: false,
+      updatedAt: false,
+      id: false,
+    },
+  );
+  return Packages;
 };

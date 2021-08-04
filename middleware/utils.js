@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import axios from 'axios';
 
 const SECRET_KEY = process.env.JWT_KEY;
 
@@ -50,4 +51,24 @@ export function absoluteUrl(req, setLocalhost) {
     origin: protocol + '//' + host,
     url: req,
   };
+}
+
+export function addDays(date, days) {
+  var result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+}
+// const api = process.env.PUBLIC_URL
+
+export const apiInstance = () => {
+	// const authorization = store.getState().userState.token ? store.getState().userState.token : null
+
+	// const headers = {
+	// 	'x-api-token': authorization ? authorization : '',
+	// }
+
+	return axios.create({
+		baseURL: '/api',
+		// headers,
+	})
 }
